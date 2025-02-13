@@ -1,25 +1,20 @@
-#Assignment
-#v0.4) kwargs를 사용한 데코레이터 예제
-
-# 로그 데코레이터 정의
+# v3.9
 def log_decorator(func):
     def wrapper(*args, **kwargs):
         print(f'Function Name : {func.__name__}')
-        print(f'Function Arguments: {args}')
-        print(f'Function Key Arguments: {kwargs}')
-        result = func(*args, **kwargs)  # 원래 함수 실행
+        print(f'Function Arguments : {args}')
+        print(f'Function Keyword Arguments : {kwargs}')
+        result = func(*args, **kwargs)
         return result
-    return wrapper  # () 제거 (호출X)
+    return wrapper
 
-# 데코레이터 적용
+
 @log_decorator
-def greet(name, greeting="안녕하세요", age=0):
-    return f"{greeting}, {name} ({age}세)"
+def greet(name, greeting="안녕하세요", age=None):
+    return f"{greeting}, {name}(age: {age})" if age else f"{greeting}, {name}"
 
-# 함수 실행 및 출력
 print(greet("인하"))
-print(greet("Inha", "Hi"))
-print(greet("Sub", "Hello"))
-print(greet("JH", greeting="Hola"))
-print(greet("IH", greeting="Konnichiwa", age=22))
-
+print(greet("인상", "안녕"))
+#print(greet("James", "Hello"))
+print(greet("Gonzales", greeting="Hola"))
+print(greet("Nakamura", greeting="Gonniziwa", age=29))
