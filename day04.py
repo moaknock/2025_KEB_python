@@ -13,13 +13,16 @@ def time_decorator(func):
         return r
     return wrapper
 
-@time_decorator
+#@time_decorator
 def factorial_repitition(n) -> int:
     result = 1
     for i in range(2, n+1):
         result = result * i
     return result
 
+number = int(input())
+ft = time_decorator(factorial_repitition)
+print(f"{number}! = {ft(number)}")
 number = int(input())
     # s = time.time()
 print(f"{number}! = {factorial_repitition(number)}")
