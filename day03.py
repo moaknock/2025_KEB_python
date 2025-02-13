@@ -6,9 +6,27 @@ import random
 
 drinks = ["위스키", "와인", "소주", "고량주"]
 foods = ["초콜릿", "삼겹살", "양꼬치", "낙곱새"]
+price = [50000,30000,5000,7500]
+amounts = [0 for i in range(len(drinks))]
 
-def print_menu(n):
+drinks.append("사케")
+foods.append("광어회")
+price.append(25000)
+amounts.append(0)
+foods[0] = "피자"
+
+# amounts = list()
+# for i in range(len(drinks)):
+#     amounts.append(0)
+total_price = 0
+
+def print_menu_total_price(n):
+    global total_price
     print(f"{drinks[n]}에 어울리는 안주는 {foods[n]}입니다.")
+    print(f"가격: {price[n]}")
+    amounts[n] = amounts[n] + 1
+    total_price = total_price + price[n]
+
 
 # 메뉴 리스트 생성
 menu_list = "다음 술 중에 고르시오.\n"
@@ -22,16 +40,20 @@ while True:
         menu = int(menu)  # 정수형으로 변환
 
         if 1 <= menu <= len(drinks):
-            print_menu(menu - 1)  # 선택한 술의 안주 출력
+            print_menu_total_price(menu - 1)  # 선택한 술의 안주 출력
         elif menu == len(drinks) + 1:
             random_index = random.randint(0, len(drinks) - 1)
             print(f"{drinks[random_index]}에 어울리는 안주는 {foods[random_index]}입니다.")
         elif menu == len(drinks) + 2:
             print("다음에 또 오세요!")
             break
-    else:
-        print("올바른 번호를 입력하세요.")
 
+    for k in range(len(drinks)):
+        if amounts[k] != 0:
+            print(f" 주류명: {drinks[k]} 수량: {amounts[k]} 단가: {price[k]} 가격: {price[k] * amounts[k]}")
+            print(f"총 금액: {total_price}원")
+    # else:
+    #     print("올바른 번호를 입력하세요.")
 
 
 
