@@ -1,14 +1,24 @@
-def fibonacci_recursion(n) -> int:
-    """
-    피보나치 수 계산함수(재귀함수 버전)
-    :param n:
-    :return: 피보나치 계산 결과 값
-    """
-    if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
-    else:
-        return fibonacci_recursion(n-2) + fibonacci_recursion(n-1)
+class Pokemon:
+    def __init__(self, name):
+        self.name = name
+        print(f"{name} 포켓몬스터 생성")
 
-print(fibonacci_recursion(int(input())))
+    def attack(self,target):
+        print(f"{self.name}이(가) {target.name}을(를) 공격!")
+
+class Pikachu(Pokemon):
+    def __init__(self, name, type):
+        super().__init__name()
+        #self.name = name
+        self.type = type
+
+    def attack(self,target):
+        print(f"{self.name}이(가) {target.name}을(를) {self.type} 공격!")
+
+    def electric_info(self):
+        print("전기 계열의 공격을 합니다")
+
+charizard = Pokemon("리자몽")
+pikachu = Pokemon("피카츄")
+squirtle = Pokemon("꼬부기")
+charizard.attack(squirtle)
